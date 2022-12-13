@@ -4,19 +4,13 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import confusion_matrix
-from sklearn import metrics
-from matplotlib.colors import ListedColormap
 
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 def main():
-
-    cmap_light = ListedColormap(['#FFAFAF', '#AFAFFF', '#F6D587'])
-    cmap_bold = ListedColormap(['red', 'blue', 'orange'])
 
     # import data
     print("Loading training data...")

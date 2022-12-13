@@ -2,7 +2,6 @@
 # Random Forest
 
 from sklearn.ensemble import RandomForestClassifier
-from matplotlib.colors import ListedColormap
 from sklearn.metrics import confusion_matrix  
 import numpy as np
 import matplotlib.pyplot as plt
@@ -63,9 +62,6 @@ def main():
     cm = confusion_matrix(testing_labels, y_pred)
     print(cm)
     
-    
-    cmap_light = ListedColormap(['#FFAFAF', '#AFAFFF', '#F6D587'])
-    cmap_bold = ListedColormap(['red', 'blue', 'orange'])
     
     plt.figure(1)
     plt.scatter(testing_data[:, 0], y_pred, edgecolor='k', s=100)
