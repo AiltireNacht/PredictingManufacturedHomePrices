@@ -79,7 +79,7 @@ def main():
 
     print("PERFORMANCE: ")
 
-    print("Accuracy: {:.2f}".format(np.sum(pred == testing_labels) / num_test))
+    print("Accuracy: {:.2f}%".format((np.sum(pred == testing_labels) / num_test) * 100))
     print("Confusion Matrix: ")
     cm = confusion_matrix(testing_labels, pred)
     print('\n'.join([''.join(['{:4}'.format(item) for item in row]) for row in cm]))

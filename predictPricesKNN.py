@@ -9,7 +9,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import confusion_matrix
 from sklearn import metrics
 from matplotlib.colors import ListedColormap
-import pdb
 
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -55,68 +54,103 @@ def main():
 
     # Calculate the accuracy of the model using test data
     print("Calculating accuracy...")
-    print(knn.score(x_test, y_test))
+    print("Accuracy: {:.2f}%".format(knn.score(x_test, y_test) * 100))
 
     # show results
     cm = confusion_matrix(y_test, pred)
     print(cm)
     plt.figure(1)
-    plt.scatter(x_test[:, 0], pred, cmap=cmap_bold, edgecolor='k', s=100)
+    plt.scatter(x_test[:, 0], pred,  edgecolor='k', s=100)
     plt.title("Predicted Manufactured Housing Prices")
     plt.xlabel('Region')
     plt.ylabel('Price')
 
     plt.figure(2)
-    plt.scatter(x_test[:, 0], y_test, cmap=cmap_bold, edgecolor='k', s=100)
-    plt.title("Predicted Manufactured Housing Prices")
+    plt.scatter(x_test[:, 0], y_test, edgecolor='k', s=100)
+    plt.title("Actual Manufactured Housing Prices")
     plt.xlabel('Region')
     plt.ylabel('Price')
+
+    print("Predictions by region: ")
+    print("Northeast: ")
+    for i in range(len(np.bincount(pred[np.where(x_test[:, 0] == 1)]))):
+        print(np.bincount(pred[np.where(x_test[:, 0] == 1)])[i], end=" ")
+        print(np.bincount(y_test[np.where(x_test[:, 0] == 1)])[i])
+    
+    print()
+    print("Midwest: ")
+    for i in range(len(np.bincount(pred[np.where(x_test[:, 0] == 2)]))):
+        print(np.bincount(pred[np.where(x_test[:, 0] == 2)])[i], end=" ")
+        print(np.bincount(y_test[np.where(x_test[:, 0] == 2)])[i])
+
+    print()
+    print("South: ")
+    for i in range(len(np.bincount(pred[np.where(x_test[:, 0] == 3)]))):
+        print(np.bincount(pred[np.where(x_test[:, 0] == 3)])[i], end=" ")
+        print(np.bincount(y_test[np.where(x_test[:, 0] == 3)])[i])
+
+    print()
+    print("West: ")
+    for i in range(len(np.bincount(pred[np.where(x_test[:, 0] == 4)]))):
+        print(np.bincount(pred[np.where(x_test[:, 0] == 4)])[i], end=" ")
+        print(np.bincount(y_test[np.where(x_test[:, 0] == 4)])[i])
 
     plt.show()
 
     plt.figure(3)
-    plt.scatter(x_test[:, 1], pred, cmap=cmap_bold, edgecolor='k', s=100)
-    plt.title("Predict Manufactured Housing Prices")
+    plt.scatter(x_test[:, 1], pred, edgecolor='k', s=100)
+    plt.title("Predicted Manufactured Housing Prices")
     plt.xlabel('Year')
     plt.ylabel('Price')
 
     plt.figure(4)
-    plt.scatter(x_test[:, 1], y_test, cmap=cmap_bold, edgecolor='k', s=100)
-    plt.title("Predict Manufactured Housing Prices")
+    plt.scatter(x_test[:, 1], y_test, edgecolor='k', s=100)
+    plt.title("Actual Manufactured Housing Prices")
     plt.xlabel('Year')
     plt.ylabel('Price')
 
     plt.show()
 
     plt.figure(5)
-    plt.scatter(x_test[:, 2], pred, cmap=cmap_bold, edgecolor='k', s=100)
-    plt.title("Predict Manufactured Housing Prices")
+    plt.scatter(x_test[:, 2], pred, edgecolor='k', s=100)
+    plt.title("Predicted Manufactured Housing Prices")
     plt.xlabel('SQFT')
     plt.ylabel('Price')
 
     plt.figure(6)
-    plt.scatter(x_test[:, 2], y_test, cmap=cmap_bold, edgecolor='k', s=100)
-    plt.title("Predict Manufactured Housing Prices")
+    plt.scatter(x_test[:, 2], y_test, edgecolor='k', s=100)
+    plt.title("Actual Manufactured Housing Prices")
     plt.xlabel('SQFT')
     plt.ylabel('Price')
 
     plt.show()
 
     plt.figure(7)
-    plt.scatter(x_test[:, 3], pred, cmap=cmap_bold, edgecolor='k', s=100)
-    plt.title("Predict Manufactured Housing Prices")
+    plt.scatter(x_test[:, 3], pred, edgecolor='k', s=100)
+    plt.title("Predicted Manufactured Housing Prices")
     plt.xlabel('Bedrooms')
     plt.ylabel('Price')
 
     plt.figure(8)
-    plt.scatter(x_test[:, 3], y_test, cmap=cmap_bold, edgecolor='k', s=100)
-    plt.title("Predict Manufactured Housing Prices")
+    plt.scatter(x_test[:, 3], y_test, edgecolor='k', s=100)
+    plt.title("Actual Manufactured Housing Prices")
     plt.xlabel('Bedrooms')
     plt.ylabel('Price')
 
+    print("Predictions by bedroom count: ")
+    print("Two or less: ")
+    for i in range(len(np.bincount(pred[np.where(x_test[:, 3] == 1)]))):
+        print(np.bincount(pred[np.where(x_test[:, 3] == 1)])[i], end=" ")
+        print(np.bincount(y_test[np.where(x_test[:, 3] == 1)])[i])
+    
+    print()
+    print("Three or more: ")
+    for i in range(len(np.bincount(pred[np.where(x_test[:, 3] == 3)]))):
+        print(np.bincount(pred[np.where(x_test[:, 3] == 3)])[i], end=" ")
+        print(np.bincount(y_test[np.where(x_test[:, 3] == 3)])[i])
+
+
     plt.show()
-        
-    pdb.set_trace()
 
 
 
